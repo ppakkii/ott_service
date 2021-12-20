@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user_service">
+
+<insert id="naver_login" parameterType="com.ott.user.vo.UserVO">
+	insert into OTT_USER (u_idx, u_name, u_email, u_id)
+			values(OTT_USER_SEQ.nextval, #{u_name}, #{u_email}, #{u_id})
+</insert>
+
+<select id="user_info" resultType="com.ott.user.vo.UserVO" parameterType="String">
+	select *
+	from ott_user
+	where u_id = #{u_id}
+</select>
+
+</mapper>

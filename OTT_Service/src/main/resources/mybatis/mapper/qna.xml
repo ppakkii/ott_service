@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qna">
+
+	<resultMap type="com.ott.bbs.vo.QnaVO" id="map1">
+		<id property="rb_idx" column="rb_idx"/>
+		<collection property="c_list" ofType="com.ott.bbs.vo.QnaCommVO"
+		 select="commList" column="rb_idx"/>
+	</resultMap>
+	
+	<!-- 특정 게시물의 기본키인 rb_idx를 받아서
+	 해당 게시물의 댓글들을 모두 반환한다. -->
+	<select id="commList" parameterType="String" 
+	resultType="com.ott.bbs.vo.QnaCommVO">
+		SELECT * FROM OTT_COMMENT
+		WHERE rb_idx = #{rb_idx} AND C_STATUS = 0
+	</select>
+	
+	
+ 	<select id="list" parameterType="Map" resultMap="map1">
+		SELECT * FROM (
+			SELECT rownum r_num,a.* FROM (
+				SELECT * FROM OTT_BBS
+				WHERE status = 0 AND bname = #{bname}
+				ORDER BY rb_idx DESC
+			) a 
+		) WHERE r_num BETWEEN #{begin} AND #{end}
+	</select>  
+	<!-- u_idx로 user정보 가져온다. -->
+	<select id="getUvo" resultType="com.ott.user.vo.UserVO" parameterType="String">
+		select *
+		from ott_user
+		where u_idx = #{u_idx} 
+	</select>
+	<!-- u_id로 user정보 가져온다. -->
+	<select id="getUvo2" resultType="com.ott.user.vo.UserVO" parameterType="String">
+		select *
+		from ott_user
+		where u_id = #{u_id}
+	</select>
+
+	<select id="totalCount" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM OTT_BBS
+		WHERE status = 0 AND bname = #{bname}
+	</select>
+	
+	<select id="getBbs" resultMap="map1" parameterType="String">
+		SELECT * FROM OTT_BBS
+		WHERE rb_idx = #{rb_idx}
+	</select>
+	
+	<!-- 원글 저장 -->
+	<insert id="add" parameterType="com.ott.bbs.vo.QnaVO">
+		INSERT INTO OTT_BBS(
+			rb_idx, 
+			subject, 
+			u_idx, 
+			content,
+			write_date, 
+			hit, 
+			status,
+			secret, 
+			bname
+			)
+		VALUES(
+			OTT_BBS_seq.NEXTVAL, 
+			#{subject}, 
+			(SELECT u_idx FROM OTT_USER WHERE u_id  = #{u_id}), 
+			#{content}, 
+			sysdate, 
+			0, 
+			0, 
+			#{secret},
+			#{bname}
+			)
+	</insert>
+	
+	<!-- 원글 수정 -->
+	<update id="edit" parameterType="com.ott.bbs.vo.QnaVO">
+		UPDATE OTT_BBS
+		SET subject = #{subject},
+			content = #{content},
+			secret = #{secret}
+		WHERE rb_idx = #{rb_idx} 
+	</update>
+	<!-- end of QNA query -->
+	
+	<update id="del" parameterType="String">
+		UPDATE OTT_BBS
+		SET status = 1
+		WHERE rb_idx = #{rb_idx}
+	</update>
+	
+	
+ 	<!-- QNA 게시판 댓글 -->
+	
+	<insert id="comment" parameterType="com.ott.bbs.vo.QnaCommVO">
+		INSERT INTO OTT_COMMENT(C_IDX, A_CONTENT, ANSWER_DATE, RB_IDX, OM_IDX, C_STATUS)
+		VALUES(OTT_COMMENT_SEQ.NEXTVAL, #{a_content}, SYSDATE, #{rb_idx}, #{om_idx}, 0)
+	</insert> 
+	
+	<!-- 댓글 수정하기 -->
+	<update id="editComment" parameterType="com.ott.bbs.vo.QnaCommVO">
+		UPDATE OTT_COMMENT
+		SET A_CONTENT = #{a_content},
+		    ANSWER_DATE = SYSDATE
+		WHERE C_IDX = #{c_idx} AND 	OM_IDX = #{om_idx}
+	</update>
+	
+	<!-- 댓글 삭제하기 -->
+	<update id="delComment" parameterType="com.ott.bbs.vo.QnaCommVO">
+		UPDATE OTT_COMMENT
+		SET C_STATUS = 1
+		WHERE C_IDX = #{c_idx} AND OM_IDX = #{om_idx}
+	</update>
+	
+	<!-- 게시판 조회수 올리기 -->
+	<update id="updateHit">
+		UPDATE OTT_BBS 
+		SET HIT = HIT + 1 
+		WHERE RB_IDX = #{rb_idx}
+	</update>
+	
+
+	
+</mapper>

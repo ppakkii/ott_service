@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+.item_box {
+	float: clear;
+	height: 343px;
+}
+
+.netflix_box{
+	position: relative;
+	width: 14.5%;
+	height: 300px;
+	margin: 0 auto;
+	border-radius: 10px;
+	border: 1px solid #6b7280;
+	box-shadow: 1px 1.5px 8px 3px grey;
+	background: #0d121c;
+	float: left;
+	margin: 10px;
+}
+.netflix_box:hover{
+	border:2px solid #6b7280;
+}
+
+.whatcha_box{
+	position: relative;
+	width: 14.5%;
+	height: 300px;
+	margin: 0 auto;
+	border-radius: 10px;
+	border: 1px solid #6b7280;
+	box-shadow: 1px 1.5px 8px 3px grey;
+	background: #0d121c;
+	float: left;
+	margin: 10px;
+}
+.whatcha_box:hover{
+	border:2px solid #6b7280;
+}
+
+.wavve_box{
+	position: relative;
+	width: 14.5%;
+	height: 300px;
+	margin: 0 auto;
+	border-radius: 10px;
+	border: 1px solid #6b7280;
+	box-shadow: 1px 1.5px 8px 3px grey;
+	background: #0d121c;
+	float: left;
+	margin: 10px;
+}
+.wavve_box:hover{
+	border:2px solid #6b7280;
+}
+
+.m_content > img {
+	width: 150px;
+	height: 200px;
+}
+.m_content>a>img{
+	width: 150px;
+	height: 200px;
+}
+.comment_area{
+	text-align: center;
+}
+
+.movie_box_button {
+	position: relative;
+	width: 7%;
+	height: 300px;
+	margin: 0 auto;
+	float: left;
+	margin: 5px;
+}
+
+.btn_arrow {
+	color: white;
+	font-size: 40px;
+	line-height: 321px;
+}
+
+.btn_arrow > a {
+  cursor: pointer;
+}
+
+.netflix_box.ott_subject{
+	background: #0d121c;
+}
+
+.ott_subject {
+	width: 100%;
+	height: 35px;
+	color: #6b7280;
+	font-size: 10px;
+	text-align: center;
+}
+
+.h_item_nav{
+	width: 100%;
+	height: 50px;
+}
+.h_item_nav ul li {
+	float: left;
+	list-style: none;
+	line-height: 20px;
+	text-align: center;
+	margin-left: 14.5%;
+}
+.search_movie{
+	width: 320px;
+	height:23.5px;
+	text-align: center;
+}
+.search_area{
+	position: relative;
+	right: 180px;
+	bottom: 5px;
+}

@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+.user_board {
+	display: inline-block;
+	position: static;
+	border: 1px solid #6b7280;
+	background-color: #1f2937;
+	box-shadow: 1px 1.5px 8px 3px grey;
+	border-radius: 10px;
+}
+
+span {
+	float: left;
+	color: white;
+	margin-bottom: 20px;
+}
+
+table {
+	width: auto;
+	border: solid 1px gray;
+	border-spacing: 0px;
+	border-style: none;
+	padding: 0px;
+}
+
+table thead {
+	background-color: #4C4C4C;
+	color: white;
+	display: table-header-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+table tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+tbody>tr {
+	color: white;
+}
+
+td {
+	height: 33px;
+}
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+.user_search_ta {
+	background-color: white;
+	border: 1px solid black;
+}
+
+.user_search_btn {
+	background-color: gray;
+	color: black;
+	border-radius: 6px;
+}
+
+.user_search_btn:active {
+	box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px
+		3px rgba(0, 0, 0, .6);
+}
+/* 확인 버튼 *********************************************************/
+.ok_btn {
+	float: right;
+	border: 0;
+	line-height: 2.5;
+	padding: 0 15px;
+	font-size: 0.8rem;
+	text-align: center;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	border-radius: 10px;
+	background-color: #8C8C8C;
+	box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px
+		3px rgba(0, 0, 0, .6);
+}
+
+.ok_btn:active {
+	box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px
+		3px rgba(0, 0, 0, .6);
+}
+/* 확인 버튼 끝 *********************************************************/
+
+/* 수정 버튼 **********************************************************/
+.edit_btn {
+	border: 0;
+	line-height: 2.5;
+	padding: 0 15px;
+	font-size: 0.8rem;
+	text-align: center;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	border-radius: 10px;
+	background-color: rgba(220, 0, 0, 1);
+	box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px
+		3px rgba(0, 0, 0, .6);
+	float: right;
+}
+
+.edit_btn:active {
+	box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px
+		3px rgba(0, 0, 0, .6);
+}
+/* 수정 버튼 끝 ********************************************************/
+
+/* 체크박스 사이즈  ***************************************************/
+.chk {
+	width: 27px; /*Desired width*/
+	height: 27px; /*Desired height*/
+	cursor: pointer;
+}
+/* 체크박스 사이즈 끝  ***************************************************/

@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+/* login Box*/
+.user_login_box {
+	display: flex;
+	flex-direction: column;
+	width: 1080px;
+	height: 570px;
+}
+.common_area {
+	width: auto;
+	height: 300px;
+	margin: 0 auto;
+	border: 2px solid #6b7280;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+.user_common {
+	width: 90%;
+	height: 50px;
+	margin-top: 7.5px;
+	border: 2px solid #6b7280;
+	border-radius: 5px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.login_btn {
+	font-weight: bold;
+	margin-top: 49px;
+	border: 0;
+	color: #f3f4f6;
+	background-color: #3b82f6;
+	border-radius: 5px;
+	margin-top: 49px;
+}
+
+.login_btn:hover {
+	font-weight: bold;
+	margin-top: 49px;
+	border: 0;
+	color: #3b82f6;
+	background-color: #f3f4f6;
+	border-radius: 5px;
+	margin-top: 49px;
+	cursor:pointer;
+}
+
+.user_common_service {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.user_common_link {
+	font-weight: bold;
+	background-color: #1f2937;
+	color: #f3f4f6;
+	margin: 10px;
+}
+
+.social_intro {
+	border: 3px solid #6b7280;
+	border-radius: 5px;
+	margin: 0 auto;
+}
+
+.social_intro>h2 {
+	font-weight: bold;
+	color: #f3f4f6;
+}
+
+.social_login_area {
+	display: flex;
+	justify-content: center;
+	background-color: #1f2937;
+	width: 41%;
+	margin: 0 auto;
+}
+
+.naver_img {
+	width: 183px;
+	height: 45px;
+}

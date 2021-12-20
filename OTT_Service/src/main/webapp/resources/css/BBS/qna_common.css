@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+table{
+	color: #d1d5db;
+}
+table th{
+	color: black;
+}
+
+table tbody tr th{
+	color: #d1d5db;
+}
+
+#bbs_qna{
+/* 	 display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; */
+	display: grid;
+	 place-items: center;
+	 min-height: 100vh;
+}

@@ -1,0 +1,316 @@
+@charset "UTF-8";
+
+#up {
+    width:1050px;
+    height:auto;
+    border-radius: 10px;
+	border: 1px solid #6b7280;
+	box-shadow: 1px 1.5px 8px 3px grey;
+	background: #0d121c;
+    float: left;
+    
+
+}
+
+#left {
+	display: block;
+	float: left;
+}
+#poster {
+	width:220px;
+	height:280px;
+}
+#poster > img {
+	width: 220px;
+	height: 280px;
+}
+#starring {
+	width: 220px;
+	height:auto;
+	text-align: center;		
+}
+	
+#right{
+	width: 820px;
+	display: block;
+	position: relative;		
+	float: left;
+}
+
+#content {
+	width: 700px;
+	padding-left: 50px;				
+}
+#rate_div {
+	width: auto;
+	height: 92px;
+	text-align: center;	
+	font-weight: bold;
+	display: inline-block;
+	padding-top: 80px;
+}
+#rate{
+	width:406px;
+	height: 90px;
+	float: left;
+	border: 1px solid #222;	
+	background: #202a38;	
+}
+#rotten{
+	width:406px;
+	height:90px;
+	float: left;
+	border: 1px solid #222;	
+	background: #202a38;	
+}
+
+#go {
+	width:auto;
+	height:auto;
+}	
+
+#write_div{
+	width: 1105px;
+	height:auto;
+	float:left;
+	display:block;
+	padding-top: 80px;
+	padding-left: 12px;
+	padding-bottom: 40px;
+}
+table{
+	width: 1100px;
+    font-size:14px;
+}
+#write_area{
+	width: 70%;
+	float: left;
+	border: 2px solid #1f2937;
+	border-radius: 10px;
+	background-color: #0d121c;
+	outline:none;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+
+
+.review_empty{height: 10px; }
+.title{font-size: 30px; font-weight: bold; }
+.starring1{font-size: 14px; font-weight: bold;}
+.starring2{font-size: 14px;}
+.about{font-size: 16px;}
+.story{font-size: 16px;}
+.story_div{ text-align:left;}
+.review_platfrom{
+	display:block;
+	width:80px;
+	height:80px;
+	border:1px solid #222;		
+	float: left;
+}
+.review_platfrom > img{
+	width:80px;
+	height: 80px;
+}
+.review_num{
+	font-size: 14px;
+	float: left;
+	height: 35px;
+	font-weight: bold;
+	
+}
+.point{
+	font-size: 50px;
+}
+.write_nickname{
+	float: left;
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 30px;
+	padding-right: 5px;
+}
+.write_star{
+	float: left;
+	padding-left: 10px;
+}
+.write_btn{
+	float: left;
+	padding-top: 10px;	
+	padding-left: 50px;	
+	
+}
+.re_btn{
+	margin-left: 11px;
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 7px;
+    border: 1px solid #6b7280;
+	box-shadow: 2.5px 2.5px 2.5px 1px grey;
+}
+.list_nickname{
+	width:150px;
+	background-color: #151923;
+	font-size: 16px;
+	font-weight: bold;
+}
+.list_content{
+	text-align:left;
+	width:750px;
+	padding: 20px 30px 25px 30px;
+	background: #0e131d;
+}
+.list_recommend{
+	width: 130px;
+	padding: 30px 0px 30px 30px;
+	background-color: #151923;
+	color:white;
+	text-align: left;
+}
+
+.review_edit:hover{
+	cursor: pointer;
+}
+
+.list_level{
+	font-size:12px;
+}
+
+.list_date{
+	font-weight: normal;
+	font-size:11px;
+}
+.recommend_btn > img{
+	width: 18px;
+	height: 18px;
+	font-size: 12px;
+}
+.list_bottom_area{
+	margin-top:50px;
+	border: 1px solid red;
+}
+
+
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 30px;
+  line-height: 30px;
+  justify-content: space-around;
+  padding: 0 2px;
+  text-align: center;
+  width: 150px;
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: gray;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+
+
+
+/* 좋아요 / 싫어요 아이콘 컬러 색상 정의*/
+.fa-thumbs-up, .fa-thumbs-down{
+	font-size: 16.5px;
+}
+.like_text_area {
+	margin: 9.5px;
+}
+
+/* 리뷰 버튼 CSS */
+.review_add{
+	width:100%;
+	border: 2px solid #6b7280;
+	border-radius:5px;
+	box-shadow: 1px 1.5px 8px 3px grey;
+	font-weight: bold;
+	background-color:black;
+	color: white;	
+}
+
+.review_add:hover{
+	cursor: pointer;
+}
+
+/*페이징*/
+table tfoot ol.paging {
+	display:inline-block;
+	text-align:center;
+ 	list-style:none;
+ 	padding-right: 50px;
+}
+
+table tfoot ol.paging li {
+    float:left;
+    margin-right:8px;
+}
+
+table tfoot ol.paging li a {
+    display:block;
+    padding:3px 7px;
+    border:1px solid white;
+    font-weight:bold;
+    text-decoration: none;
+    background-color: #2e3543;
+}
+
+table tfoot ol.paging li a:hover {
+    background:gray;
+    color:white;
+    font-weight:bold;
+}
+
+.disable {
+    padding:3px 7px;
+    border:1px solid silver;
+    color:silver;
+}
+
+.now {
+   padding:3px 7px;
+    border:1px solid white;
+    background:#111A29;
+    color:white;
+    font-weight:bold;
+}
+
+/*edit_review */
+.edit_back{
+	
+	padding: 50px 0px 0px 50px;
+	text-align: center;
+}
+.review_edit2{
+	float: left;
+	margin-left: 70px;
+	background-color: white;
+	color: black;
+}
+
+.star_color{
+	color: gold;
+}
+.review_content_text{
+	color: white;
+	font-weight: bold;
+}
+

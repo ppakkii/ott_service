@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/*----------------- 수정 버튼 --------------------*/
+		.edit_btn {
+	    border: 0;
+	    line-height: 2.5;
+	    padding: 0 15px;
+	    font-size: 0.6rem;
+	    text-align: center;
+	    color: #fff;
+	    text-shadow: 1px 1px 1px #000;
+	    border-radius: 10px;
+	    background-color: rgba(220, 0, 0, 1);
+
+	    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+	                inset -2px -2px 3px rgba(0, 0, 0, .6);
+		}
+		.edit_btn:active {
+		    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+		                inset 2px 2px 3px rgba(0, 0, 0, .6);
+		}
+		
+/*----------------- 수정 버튼 끝 --------------------*/	
+
+/*----------------- 삭제 버튼 -----------------  */
+		.del_btn {
+	    border: 0;
+	    line-height: 2.5;
+	    padding: 0 15px;
+	    font-size: 0.6rem;
+	    text-align: center;
+	    color: #fff;
+	    text-shadow: 1px 1px 1px #000;
+	    border-radius: 10px;
+	    background-color: #8C8C8C;
+
+	    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+	                inset -2px -2px 3px rgba(0, 0, 0, .6);
+		}
+		.del_btn:active {
+		    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+		                inset 2px 2px 3px rgba(0, 0, 0, .6);
+		}
+/*----------------- 삭제 버튼 끝 -----------------  */
+
+/*----------------- 게시판-----------------  */
+		.admin_h1{
+			color: black;
+		}
+		
+		.admin_board{
+			display: inline-block;
+			position: static;
+			border: 1px solid #6b7280;
+			background-color: #1f2937;
+			box-shadow: 1px 1.5px 8px 3px gray;
+			border-radius: 10px;
+		}
+		table{
+			display: block;
+			border: solid 1px gray;
+		    border-spacing: 0px;
+		    border-style: none;
+		    padding: 0px;
+			
+		}
+		.admin_thead{
+			background-color: #4C4C4C;
+		}
+		.admin_thead td{
+			/*background-color: #8C8C8C;*/
+			color: white;
+			font-weight: bold;
+			
+
+
+		}
+		.admin_thead tr{
+			/*background-color: #8C8C8C;*/
+			
+		}
+		.top_board{
+			float: left;
+			background-color: #BDBDBD;
+		}
+		.total_board{
+			float: left;
+			color: white;
+			margin-bottom: 20px;
+		}
+		
+		.add_board_btn{
+			float: right;
+			background-color: gray;
+			color:black;
+		}
+		.add_board_btn:active {
+		    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+             inset 2px 2px 3px rgba(0, 0, 0, .6);
+		
+		}
+		.admin_search_ta{
+			background-color: white;
+			border: 1px solid black;
+		}
+		.admin_search_btn{
+			background-color: gray;
+			color:black;
+		}
+		.admin_search_btn:active {
+		    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+             inset 2px 2px 3px rgba(0, 0, 0, .6);
+		
+		}
+		tbody>tr{
+			color: white;
+		}
+/*----------------- 게시판 끝 -----------------  */
+			

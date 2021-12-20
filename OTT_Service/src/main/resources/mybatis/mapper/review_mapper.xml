@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+
+	<select id="viewContent" parameterType="int" resultType="com.ott.platform.vo.PlatFormVO">
+		SELECT * FROM OTT_SERVICE
+		WHERE OTT_IDX = #{ott_idx}
+	</select>
+
+	<insert id="add_review" parameterType="com.ott.review.vo.ReviewVO">
+		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT, U_NAME, R_DATE, STATUS)
+		VALUES(OTT_REVIEW_BBS_SEQ.NEXTVAL, #{ott_idx}, #{u_idx}, #{content}, #{rating}, 0, 0, #{u_name}, sysdate, 1)
+	</insert>
+	
+	
+	<select id="get_u_idx" resultType="com.ott.user.vo.UserVO" parameterType="com.ott.user.vo.UserVO">
+		SELECT U_IDX
+		FROM OTT_USER
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	<update id="editU_name" parameterType="com.ott.user.vo.UserVO">
+		update ott_review
+		set u_name = #{u_name}
+		where u_idx = #{u_idx}
+	</update> 
+	
+	<select id="nodouble" resultType="com.ott.review.vo.ReviewVO" parameterType="Map">
+		select *
+		from ott_review
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
+	</select>
+	
+	<update id="warning" parameterType="Map">
+		update ott_user
+		set is_warning = #{is_warning}
+		where u_idx = #{u_idx}
+	</update>
+	
+	<select id="getwarning" resultType="com.ott.user.vo.UserVO" parameterType="int">
+		select *
+		from ott_user
+		where u_idx = #{u_idx}
+	</select>
+	
+	
+	
+	<resultMap id="review_map" type="com.ott.review.vo.ReviewVO">
+		<id property="rv_idx" column="rv_idx"/>
+		<!-- 원글 하나에 여러 개의 댓글들이 존재할 수 있으므로
+			집합구조를 일대 다관계에 맞는 collection을 선언한다. -->
+	</resultMap>
+	
+	
+	<select id="getReview" resultMap="review_map" parameterType="Map">
+		SELECT * FROM (
+			SELECT rownum r_num,a.* , u.u_level FROM (
+				SELECT * FROM OTT_REVIEW
+				WHERE ott_idx = #{ott_idx} and status = 1
+				ORDER BY rv_idx DESC
+			) a,
+			(SELECT u_idx, u_level FROM OTT_USER)u
+			WHERE u.u_idx = a.u_idx 
+		) WHERE r_num BETWEEN #{begin} AND #{end} 
+	</select>
+	
+	<select id="selectReview" parameterType="int" resultType="com.ott.review.vo.ReviewVO">
+		SELECT * FROM OTT_REVIEW
+		WHERE RV_IDX = #{rv_idx}
+	</select>
+	
+	<update id="delReview" parameterType="com.ott.review.vo.ReviewVO">
+		UPDATE ott_review
+		SET status = 2
+		where rv_idx = #{rv_idx}
+	</update>
+	
+	<update id="editReview" parameterType="com.ott.review.vo.ReviewVO">
+		UPDATE OTT_REVIEW
+		SET CONTENT = #{content}, rating = #{rating}
+		WHERE RV_IDX = #{rv_idx}
+	</update>
+	
+	<select id="review_count" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM OTT_REVIEW
+		WHERE OTT_IDX = #{ott_idx} and status = 1
+		<!-- and status = 1 -->
+	</select>
+	
+	<select id="rating" resultType="double" parameterType="int">
+		SELECT ROUND(AVG(RATING),2) FROM OTT_REVIEW
+		WHERE OTT_IDX = #{ott_idx} and status = 1 
+		<!-- and status = 1 -->
+	</select>
+	
+	<update id="thumpUp" parameterType="Map">
+		update ott_review
+		SET is_good = #{is_good}
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
+	</update>
+	
+	<update id="thumpDown" parameterType="Map">
+		update ott_review
+		SET is_not = #{is_not}
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
+	</update>
+	
+	<select id="getGood" resultType="int" parameterType="Map">
+		select is_good
+		from ott_review
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
+	</select>
+	
+	<select id="getNot" resultType="int" parameterType="Map">
+		select is_not
+		from ott_review
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
+	</select>
+	
+	<update id="get_exp" parameterType="Map">
+
+		UPDATE OTT_USER
+
+		SET EXP = #{u_exp} , U_LEVEL = #{u_level}
+
+		WHERE u_idx = #{u_idx}
+
+	</update>
+
+</mapper>

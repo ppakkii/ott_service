@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#bbs_qna table {
+	width: 600px;
+	margin-left: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+#bbs table caption {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#bbs_qna table th {
+	text-align: center;
+	border: 1px solid black;
+	padding: 4px 10px;
+	
+	width: 300px;
+	
+}
+
+#bbs_qna table td {
+	text-align: left;
+	border: 1px solid black;
+	padding: 4px 10px;
+}
+
+.title {
+	background: lightsteelblue
+}
+
+.odd {
+	background: silver
+}
+#content{
+	background-color:  rgba(11, 15, 25, .9);
+	color:#6b7280;
+}
+textarea.content_ta { 
+	min-height: 300px; width:500px; 
+	background-color:  rgba(11, 15, 25, .9);
+	color:#6b7280;				
+}
+
+#bbs_qna table {
+	color: white;
+	text-align: center;
+}

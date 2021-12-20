@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+		tfoot .paging li{
+			
+			list-style-type: none;
+			float: left;
+			margin-left: 40px;
+		}
+		tfoot .paging{
+			display: inline-block;
+			list-style:none;
+    		list-style-type:none;
+			    margin-right: 200px;
+		}
+		
+		

@@ -1,0 +1,83 @@
+@charset "UTF-8";
+body {
+	background-color:#1F2937;
+	color:#CED2D8;
+}
+form {
+	display:inline-block;
+	text-align:center;
+}
+.pw_reissue {
+	width:350px;
+	border:0px;
+}
+.id_find {
+	width:350px;
+	border:0px;
+}
+.login_main {
+	width:350px;
+	border:2px;
+}
+.join {
+	width:380px;
+	border:0px;
+}
+#main_frame {
+	text-align:center;
+	font-size:13px;
+}
+a #text {
+	color:#CED2D8;
+	text-decoration:none;
+}
+div #blank {
+	margin:200px 0px;
+}
+div #blank2 {
+	margin:99px 0px;
+}
+div #blank3 {
+	margin:69px 0px;
+}
+div #blank4 {
+	margin:210px 0px;
+}
+fieldset {
+	line-height:12px;
+	background-color:#374151;
+}
+input {
+	height:30px;
+}
+input.social {
+	width:155px;
+	height:36px;
+}
+a .social {
+	width:155px;
+	height:36px;
+	background-color:#1F2937;
+}
+.submit {
+	width:300px;
+	height:30px;
+	background-color:#2563EB;
+	color:#FFFFFF;
+	border:0;
+	outline:0;
+}
+div #maincontent {
+	text-align:left;
+	font-size:16px;
+}
+div #subcontent {
+	font-size:13px;
+}
+div #content {
+	text-align:left;
+	font-size:13px;
+}
+.alink {
+	background-color:#1F2937;
+}
