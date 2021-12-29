@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+
+<!-- manager 회원가입 -->
+<insert id="m_join" parameterType="com.ott.user.vo.ManagerVO">
+	INSERT INTO OTT_MANAGER (om_idx, manager_id, manager_pw, om_salt, om_status)
+			VALUES(OTT_MANAGER_SEQ.nextval, #{manager_id}, #{manager_pw}, #{om_salt}, #{om_status})
+</insert>
+<!-- manager 로그인 -->
+<select id="m_login" parameterType="Map" resultType="com.ott.user.vo.ManagerVO" >
+	SELECT OM_IDX
+	     , MANAGER_ID
+	     , MANAGER_PW
+	FROM OTT_MANAGER
+	WHERE manager_id = #{manager_id} AND MANAGER_PW = #{manager_pw}
+</select>
+
+<select id="manager_info" resultType="com.ott.user.vo.ManagerVO" parameterType="String">
+	SELECT *
+	FROM OTT_MANAGER
+	WHERE manager_id = #{manager_id}
+</select>
+
+<select id="manager_info2" resultType="com.ott.user.vo.ManagerVO" parameterType="String">
+	SELECT * 
+	FROM OTT_MANAGER
+	WHERE OM_IDX = #{om_idx}
+</select>
+
+</mapper>

@@ -85,7 +85,7 @@
 </select>
 
 <!-- 유저 프로필 사진 업로드 -->
-<update id="user_img" parameterType="Map">
+<update id="user_img" parameterType="com.ott.user.vo.UserVO">
 	UPDATE OTT_USER
 	SET
 		<if test="oname != null ">
@@ -139,7 +139,7 @@
 		SELECT
 		exp, u_level FROM OTT_USER
 		WHERE u_idx = #{u_idx} 
+	
 </select>
 	
-
 </mapper>

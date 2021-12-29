@@ -97,8 +97,24 @@
  	<!-- QNA 게시판 댓글 -->
 	
 	<insert id="comment" parameterType="com.ott.bbs.vo.QnaCommVO">
-		INSERT INTO OTT_COMMENT(C_IDX, A_CONTENT, ANSWER_DATE, RB_IDX, OM_IDX, C_STATUS)
-		VALUES(OTT_COMMENT_SEQ.NEXTVAL, #{a_content}, SYSDATE, #{rb_idx}, #{om_idx}, 0)
+		INSERT INTO OTT_COMMENT(
+				C_IDX
+			  ,	A_CONTENT
+			  , ANSWER_DATE
+			  , RB_IDX
+			  , OM_IDX
+			  , C_STATUS
+			  ,	MANAGER_ID
+			  )
+		VALUES(
+				OTT_COMMENT_SEQ.NEXTVAL
+			   , #{a_content}
+			   , SYSDATE
+			   , #{rb_idx}
+			   , #{om_idx}
+			   , 0 
+			   , #{manager_id}
+			   )
 	</insert> 
 	
 	<!-- 댓글 수정하기 -->

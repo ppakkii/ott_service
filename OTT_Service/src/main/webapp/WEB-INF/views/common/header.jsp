@@ -17,7 +17,7 @@
       <div class="nav_middle">
          <form class="search_form" action="/search" method="POST">
             <input class="search_movie" type="text" id="s_movie" name="s_movie"
-               placeholder="영화검색(테스트용)">
+               placeholder="영화검색">
                 
             <a> <i class="fas fa-search"></i>
             </a>
@@ -25,15 +25,15 @@
       </div>
 
       <ul class="nav_item nav_right">
-         <c:if test="${empty uvo }">
+	         <c:if test="${empty uvo && empty ManVO}">
             <span><a href="/login">
                로그인 / 회원가입
             </a></span>
          </c:if>
          <c:if test="${!empty uvo }">
                   <!-- popup start -->
-               <li class="user_menu_list_box"><span><a
-                  class="user_menu">${uvo.u_name} 님</a></span> 
+               <li class="user_menu_list_box">
+               <span><a class="user_menu">${uvo.u_name} 님</a></span> 
                <div id="user_menu_list" class="user_menu_list">
                   <div class="user_profile_area">
                      <div class="user_profile_text">${fn:substring(uvo.u_name,1,3)}</div>
@@ -47,6 +47,15 @@
             <!-- popup end -->
             <li><span><a href="/QNA.list">고객센터</a></span></li>
          </c:if>
+         
+             <c:if test="${!empty ManVO }">
+			   	<li>
+					<h3>${ManVO.manager_id }님</h3>
+			    </li>
+		        <li> 
+		        	<a href="/manager_logout">로그아웃</a>
+		        </li>
+	         </c:if>
       </ul>
    </nav>
 

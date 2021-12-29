@@ -75,13 +75,13 @@
 								<th>관리자:</th>
 <!--========================================= om_idx value에 세션에 접속중인 값 자동으로 들어가야 됨=========================== -->
 								<td>
-									<input type="text" name="om_idx" value="1"/> 
-						  			<input type="text" name="magager_id" value="pkb"/> 
+									<input type="hidden" name="om_idx" value="${ManVO.om_idx }"/> 
+						  			<input type="text" name="manager_id" value="${ManVO.manager_id}" readonly="readonly"/> 
 						  		</td>
 <!--============================================================================================================================ -->
 							</tr>
 							<tr>
-								<th>내용:</th>
+								<th>내용: </th>
 								<td>
 									<textarea id="a_content_ta" rows="4" cols="55" name="a_content"></textarea>
 						  		</td>
@@ -99,10 +99,8 @@
 					<%-- 원글을 의미하는 원글의 기본키 --%>
 					<input type="hidden" name="rb_idx" value="${q_vo.rb_idx }"> 
 					<input type="hidden" name="cPage" value="${param.cPage }">
-					<%--  ans_write.jsp에서 
-					댓글을 저장한 후 다시 view.jsp로 돌아올 때 필요하다. 
-					 <input type="hidden" name="ip" value="${ip }"> 
-					 <input type="submit" value="저장하기" />  --%>
+
+		
 				</form>
 				<p />
 				<hr id="horizon"/>
@@ -117,10 +115,13 @@
 								<tbody>
 									<tr>
 										<th>관리자</th>
-										<td>om_idx : ${qc_vo.om_idx}</td>
+										<td >${qc_vo.manager_id}</td>
+								
+										
+	
 										<th>날짜</th>
 										<td>${qc_vo.answer_date }</td>
-										
+
 									</tr>
 									<tr>
 										<th>내용</th>
@@ -187,6 +188,7 @@
 			<script>
 			//	세션의 ID
 			var ss_u_id = '${uvo.u_id}';
+			var ss_m_id = '${ManVO.manager_id}'
 			//==============	원글 수정	==================
 				function edit(u_id) {
 					// 세션의 ID와, 글의 ID값을 비교하여 수행
@@ -207,25 +209,41 @@
 				} 
 
 			//==============	원글 삭제	==================
+
 				function del(u_id) {
 					// 세션의 ID와, 글의 ID값을 비교하여 수행
-					if(ss_u_id == u_id){
+					if(ss_m_id){
 						if (confirm("삭제하시겠습니까?")) {
 							document.frm.action = "/QNA.delete";
 							document.frm.submit();
 						}else
+							return;
+					}else if(ss_u_id){
+						if(u_id != ss_u_id){
+							alert("권한이 없습니다.")
 						return;
-					}else if(ss_u_id != u_id){
-						alert("권한이 없습니다.")
-						return;
+						}else if (u_id == ss_u_id){
+							if (confirm("삭제하시겠습니까?")) {
+								document.frm.action = "/QNA.delete";
+								document.frm.submit();
+							}else{
+								return;
+							}
+						}else if(u_id != ss_u_id){
+							alert("권한이 없습니다.");
+						}
 					}
-				}
-				
+				}				
 			//=============jquery===============
 		$(function (){
-			//******저장 버튼 클릭 시 *******
+			//******(댓글) 저장 버튼 클릭 시 *******
 			$("#c_save_btn").click(function(){
+				if(	ss_m_id == "undefinded" || ss_m_id == "" || ss_m_id == null){
+					alert("권한이 없습니다.");
+					return;
+				}else
 				saveComment();
+				
 			});
 			function saveComment() {
 				var content = $("#a_content_ta").val()
@@ -239,8 +257,9 @@
 							$("#qna_answer").submit();
 						}else
 							return;
-					}
 			}
+		 
+		}
 			
 			
 			$(".c_edit_btn").click(function(){ 
@@ -291,6 +310,10 @@
 			
 			//	삭제버튼 클릭시
 			$(".delCommbtn").click(function(){
+				if(	ss_m_id == "undefinded" || ss_m_id == "" || ss_m_id == null){
+					alert("권한이 없습니다.");
+					return;
+				}else
 				edit_del($(this));
 			});	
 			function edit_del(obj){

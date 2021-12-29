@@ -26,9 +26,7 @@
 <title>Main</title>
 
 <style>
-	.admin_board{
-	padding:30px;
-	}
+
 </style>
 </head>
 <body>
@@ -56,7 +54,7 @@
 								
 								
 							</select>
-							<input class="admin_search_ta" type="text" name="admin_search_ta"/>
+							<input class="admin_search_ta" type="text" name="admin_search_ta" />
 							<input class="admin_search_btn" type="button" name="admin_search_btn" value="검색"/>
 						</div>
 					</div>
@@ -129,7 +127,7 @@
 									<td>전체</td>
 									<td>전체</td>
 									<td>
-										<button class="edit_btn" type="button">
+										<button class="edit_btn" type="button" >
 										    수정
 										</button>
 										<button class="del_btn" type="button">
@@ -145,7 +143,7 @@
 									<td>전체</td>
 									<td>전체</td>
 									<td>
-										<button class="edit_btn" type="button">
+										<button class="edit_btn" type="button" onclick="javascript:location.href='/QNA.list'">
 										    수정
 										</button>
 										<button class="del_btn" type="button">

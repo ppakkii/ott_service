@@ -74,21 +74,7 @@
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
-	/* 
-		function sendData() {
-			if (document.forms[0].subject.value.trim().length < 0) {
-				alert("제목을 입력하세요");
-				document.forms[0].title.focus();
-				return;//수행 중단
-			}
-			if (document.forms[0].content.value.trim().length < 0) {
-				alert("내용을 입력하세요");
-				document.forms[0].content.focus();
-				return;//수행 중단
-			}
-			document.forms[0].submit(); 
-		}
-	*/
+
 	$(document).ready(function() {
 		$("#send_btn").click(function() {
 			onClickSend();
@@ -102,12 +88,12 @@
 				}else if(content <=0){
 					alert("내용을 입력하세요");
 				}else{
-					confirm("글을 등록하시겠습니까?");
-					if(confirm){
+					
+					if(confirm("글을 등록하시겠습니까?") == true){
 						$("#sendForm").submit();
-					}else{
+					}else
 						return false;
-					} 
+					
 				
 				}
 					

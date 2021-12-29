@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.admin_board {
+	position: static;
+	display: inline-flex;
+	text-align: center;
+	flex-direction: column;
+	width: 600px;
+	height: auto;
+	padding:30px;
+	border-radius: 10px;
+	box-shadow: 1px 1.5px 8px 3px gray;
+	background-color: #1f2937;
+	border: 1px solid #6b7280;
+	}
+.login_btn {
+	font-weight: bold;
+	margin-top: 49px;
+	border: 0;
+	color: #f3f4f6;
+	background-color: #3b82f6;
+	border-radius: 5px;
+	
+	}
+.login_btn:hover {
+	font-weight: bold;
+
+	border: 0;
+	color: #3b82f6;
+	background-color: #f3f4f6;
+	border-radius: 5px;
+
+	cursor:pointer;
+}
+.manager_join {
+	font-weight: bold;
+	background-color: #1f2937;
+	color: #f3f4f6;
+	margin: 10px;
+}
+.manager_common {
+	width: 90%;
+	height: 50px;
+	margin-top: 7.5px;
+	border: 2px solid #6b7280;
+	border-radius: 5px;
+	text-align: center;
+	font-weight: bold;
+}
+.manager_common_service {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 20px;
+}
+
+
+	
+
+			

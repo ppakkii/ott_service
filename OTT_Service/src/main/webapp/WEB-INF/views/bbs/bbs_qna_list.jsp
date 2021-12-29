@@ -85,7 +85,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
 	var nowPage = ${nowPage};
-	var ss_u_id = '${uvo.u_id}';
+	var ss_u_id = '${uvo.u_id}';			//	세션에 저장된 유저 아이디
+	var ss_m_id = '${ManVO.manager_id}';	//	세션에 저장된 관리자 아이디
 	
 	/*
 		u_id    : 게시글의 아이디 
@@ -95,7 +96,8 @@
 	function check_session(u_id, rb_idx, secret){
 		
 	    // 로그인 체크
-	    if(ss_u_id == "undefinded" || ss_u_id == "" || ss_u_id == null){
+	    if((ss_u_id == "undefinded" || ss_u_id == "" || ss_u_id == null) &&(
+	    		ss_m_id == "undefinded" || ss_m_id == "" || ss_m_id == null)){
 	    	alert('로그인 해주세요.');
 	    	location.href="/login";
 	    	return;
@@ -106,14 +108,20 @@
 		if(secret == "public"){
 			location.href="QNA.view?rb_idx="+rb_idx+"&cPage="+nowPage;
 		}else if(secret == "private"){
-			
-			
-			// 게시글의 u_id와 세션u_id 비교!~
-			if(ss_u_id != u_id ){
-				alert("비밀글입니다.");
-				return;
-			}else{
-				location.href="QNA.view?rb_idx="+rb_idx+"&cPage="+nowPage;	
+			if(!ss_u_id){
+				if(ss_m_id){
+					location.href="QNA.view?rb_idx="+rb_idx+"&cPage="+nowPage;	
+				}else if(!ss_m_id){
+					alert("비밀글입니다.");
+					return false;
+				}
+			}else if(ss_u_id){
+				if(ss_u_id == u_id){
+					location.href="QNA.view?rb_idx="+rb_idx+"&cPage="+nowPage; 
+				}else if(ss_u_id != u_id){
+					alert("비밀글입니다.");
+					return false;
+				}
 			}
 			
 		}

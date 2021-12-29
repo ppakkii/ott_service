@@ -1,5 +1,7 @@
 package com.ott.app;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,14 +13,17 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ott.Util.Paging_admin;
 import com.ott.bbs.vo.QnaCommVO;
 import com.ott.bbs.vo.QnaVO;
+import com.ott.dao.ManagerDAO;
 import com.ott.dao.QnaDAO;
+import com.ott.user.vo.ManagerVO;
 import com.ott.user.vo.UserVO;
 
 
 
 @Controller
 public class QnaController {
-
+	@Autowired
+	private ManagerDAO m_dao;
 	@Autowired
 	private QnaDAO q_dao;
 	@Autowired
@@ -89,9 +94,16 @@ public class QnaController {
 		QnaVO q_vo = q_dao.getBbs(rb_idx);
 		UserVO u_vo = q_dao.getUvo(q_vo.getU_idx());
 	    q_vo.setHit(q_dao.updateHit(rb_idx));
-	   // String hit = q_vo.getHit();
-		mv.addObject("q_vo", q_vo);
+	    
+
+		
+
+	    q_vo.setHit(q_dao.updateHit(rb_idx));
+	   
+	    mv.addObject("q_vo", q_vo);
 		mv.addObject("u_vo", u_vo);
+		
+		
 		
 		mv.setViewName("bbs/bbs_qna_view");
 
@@ -217,22 +229,35 @@ public class QnaController {
 	//=================== 댓글 등록하기 =======================
 	@RequestMapping(value = "/QNA.answer", method = RequestMethod.POST)
 	public ModelAndView writeComment(HttpServletRequest request, QnaCommVO qc_vo, String cPage) {
-		ModelAndView mv = new ModelAndView();
 		
-	
+		
+		ModelAndView mv = new ModelAndView();
 		//QnaCommVO qcvo =
 		String om_idx = request.getParameter("om_idx");
+		String manager_id = request.getParameter("manager_id");
 		String a_content = request.getParameter("a_content");
 		String rb_idx = request.getParameter("rb_idx");
 	
+		q_dao.commentQna(qc_vo);
+		// System.out.println("댓글 작성자 : "+qc_vo.getManager_id()); pkb
+		
+	
+		
+		ManagerVO m_vo = m_dao.getMvo(om_idx);
+		//String manager_id = m_vo.getManager_id();
+		
 		qc_vo.setA_content(a_content);
 		qc_vo.setOm_idx(om_idx);
 		qc_vo.setRb_idx(rb_idx);
-	
-		q_dao.commentQna(qc_vo);
+		qc_vo.setManager_id(manager_id);
 		
+	
+		// qc_vo.setManager_id(manager_id);
 		// qc_vo = q_dao.getcommList(rb_idx);
-		mv.addObject("qc_vo",qc_vo);
+		mv.addObject("m_vo", m_vo);
+		mv.addObject("qcvo",qc_vo);
+		// mv.addObject("manager_id",);
+		System.out.println("manager_id:" + qc_vo.getManager_id());
 		mv.setViewName("redirect:/QNA.view?rb_idx="+rb_idx+"&cPage="+cPage);
 		
 	

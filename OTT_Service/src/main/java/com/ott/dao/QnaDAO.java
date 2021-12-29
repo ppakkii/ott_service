@@ -71,8 +71,16 @@ public class QnaDAO {
 	public UserVO getUvo2(String u_id) {  //  u_id로 해당 회원 정보 불러오기
 	  return ss.selectOne("qna.getUvo2",u_id); 
 	}
+	/*
 	public QnaCommVO commentQna(QnaCommVO qc_vo) {	// 댓글 기능
 		return ss.selectOne("qna.comment", qc_vo);
+	}
+	*/
+	
+	public int commentQna(QnaCommVO qc_vo) {
+		
+		return ss.insert("qna.comment",qc_vo);
+		
 	}
 	public QnaCommVO editComment(QnaCommVO qc_vo) {	// 댓글 수정
 		return ss.selectOne("qna.editComment", qc_vo);
